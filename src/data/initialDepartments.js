@@ -5,6 +5,7 @@ const initialDepartments = [
     id: "hq-001",
     name: "Генеральна дирекція",
     manager: {
+      id: "m-001",
       name: "Олександр Ковальчук",
       position: "Генеральний директор",
       phone: "+380671234567",
@@ -14,11 +15,24 @@ const initialDepartments = [
         "https://ui-avatars.com/api/?name=Олександр+Ковальчук&background=0054a6&color=fff",
       notes: ["В штаті з 2005 року", "Кандидат технічних наук"],
     },
+    staff: [
+      {
+        id: "s-001",
+        name: "Тетяна Бєлова",
+        position: "Помічник директора",
+        phone: "+380670001122",
+        hasCar: false,
+        notes: ["Організація нарад"],
+        photo:
+          "https://ui-avatars.com/api/?name=Тетяна+Бєлова&background=64748b&color=fff",
+      },
+    ],
     subDepartments: [
       {
         id: "tech-001",
         name: "Технічна дирекція",
         manager: {
+          id: "m-002",
           name: "Ігор Степаненко",
           position: "Головний інженер",
           phone: "+380671112233",
@@ -28,14 +42,8 @@ const initialDepartments = [
             "https://ui-avatars.com/api/?name=Ігор+Степаненко&background=0054a6&color=fff",
           notes: ["Відповідальний за ОЗП"],
         },
-        subDepartments: [
-          {
-            id: "res-001",
-            name: "Хмельницький міський РЕМ",
-            manager: null,
-            subDepartments: [],
-          },
-        ],
+        staff: [],
+        subDepartments: [],
       },
     ],
   },
