@@ -4,8 +4,16 @@ import StructurePage from "./pages/StructurePage";
 import EmployeesPage from "./pages/EmployeesPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import Navigation from "./pages/Navigation";
+import { useState } from "react";
+import initialDepartments from "./data/initialDepartments";
 
 export default function App() {
+  const [data, setData] = useState(initialDepartments);
+  useState(() => {
+    const savedData = localStorage.getItem("companyData");
+    if (savedData) setData(JSON.parse(savedData));
+  }, []);
+
   return (
     <Router>
       <div className="min-h-screen bg-[#f8fafc] font-sans selection:bg-blue-100 selection:text-[#0054a6]">
@@ -13,17 +21,16 @@ export default function App() {
 
         <main className="max-w-7xl mx-auto">
           <Routes>
-            <Route path="/" element={<StructurePage />} />
-            <Route path="/employees" element={<EmployeesPage />} />
-            <Route path="/analytics" element={<AnalyticsPage />} />
-            {/* Повернення на головну, якщо маршрут не знайдено */}
-            <Route path="*" element={<StructurePage />} />
+            <Route path="/structure" element={<StructurePage data={data} />} />
+            <Route path="/employees" element={<EmployeesPage data={data} />} />
+            <Route path="/analytics" element={<AnalyticsPage data={data} />} />
+            <Route path="*" element={<StructurePage data={data} />} />
           </Routes>
         </main>
 
         <footer className="py-12 border-t border-slate-100 mt-20">
           <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] text-center">
-            © 2024 EnergyCorp Systems. Розробка для VS Code.
+            Operations Dashboard
           </p>
         </footer>
       </div>

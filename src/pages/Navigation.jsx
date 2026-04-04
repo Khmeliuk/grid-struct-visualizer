@@ -1,11 +1,13 @@
 import { PieChart, Shield, Users, Zap } from "lucide-react";
 import { Link, useLocation } from "react-router";
+import myLogo from "../assets/logo.png";
+import Header from "../components/Header";
 
 const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: "/", label: "Структура", icon: <Shield size={18} /> },
+    { path: "/structure", label: "Структура", icon: <Shield size={18} /> },
     { path: "/employees", label: "Працівники", icon: <Users size={18} /> },
     { path: "/analytics", label: "Аналітика", icon: <PieChart size={18} /> },
   ];
@@ -17,17 +19,8 @@ const Navigation = () => {
           to="/"
           className="flex items-center gap-3 hover:opacity-80 transition-opacity"
         >
-          <div className="bg-[#0054a6] p-2 rounded-lg text-white">
-            <Zap size={22} fill="currentColor" />
-          </div>
-          <div className="text-left text-slate-800">
-            <h1 className="text-lg font-black uppercase leading-none">
-              EnergyCorp
-            </h1>
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
-              HR & Operations
-            </span>
-          </div>
+          <img src={myLogo} alt="Logo" className="h-10 w-40" />
+          <div className="text-left text-slate-800"></div>
         </Link>
 
         <nav className="flex items-center gap-6">
@@ -35,7 +28,7 @@ const Navigation = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all
+              className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all border-b-2 border-[#ffed00] pb-1
                 ${
                   location.pathname === item.path
                     ? "bg-blue-50 text-[#0054a6]"
